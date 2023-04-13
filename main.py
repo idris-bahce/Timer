@@ -58,6 +58,11 @@ def stop():
     resume_button.grid(column=3, row=6)
 
 
+def work_hard():
+    hour_entry.delete(0, END)
+    hour_entry.insert(END, "05")
+
+
 window = Tk()
 window.title("Timer")
 window.config(pady=100, padx=100, bg=YELLOW)
@@ -94,4 +99,6 @@ start_button.grid(column=0, row=6)
 stop_button = Button(text="Stop", width=5, command=stop)
 stop_button.grid(column=3, row=6)
 
+work_hard_button = Button(text="WORK HARD\n05:00:00", width=10, height=2, command=work_hard)
+work_hard_button.grid(column=1, row=6, columnspan=2)
 window.mainloop()
