@@ -1,6 +1,5 @@
 from tkinter import *
 import math
-from placeholder import Placeholder
 from playsound import playsound
 
 GREEN = "#9bdeac"
@@ -47,6 +46,7 @@ def continue_count_down():
     time.config(text=f"{hours}:{minutes}:{seconds}")
     count = (int(hours) * 3600) + (int(minutes) * 60) + int(seconds)
     resume_button.config(text="Stop", width=5, command=stop)
+    resume_button.grid(column=3, row=6)
     if count >= 0:
         window.after(1000, count_down, count - 1)
 
@@ -55,7 +55,7 @@ def stop():
     global resume_button
     window.after_cancel(timer)
     resume_button = Button(text="Resume", width=5, command=continue_count_down)
-    resume_button.grid(column=3, row=3)
+    resume_button.grid(column=3, row=6)
 
 
 window = Tk()
@@ -68,16 +68,19 @@ main_writing = Label(text="Timer", fg=GREEN, font=(FONT_NAME, 40, "bold"), bg=YE
 main_writing.grid(column=1, row=0)
 
 hour_entry = Entry(window, width=8)
+hour_entry.insert(END, "00")
 hour_entry.grid(column=0, row=2)
 hour_label = Label(text="hours", fg=GREEN, font=(FONT_NAME, 8, "bold"), bg=YELLOW)
 hour_label.place(x=50, y=70)
 
 minute_entry = Entry(window, width=8)
+minute_entry.insert(END, "00")
 minute_entry.grid(column=1, row=2)
 minute_label = Label(text="minutes", fg=GREEN, font=(FONT_NAME, 8, "bold"), bg=YELLOW)
 minute_label.place(x=210, y=70)
 
 second_entry = Entry(window, width=8)
+second_entry.insert(END, "00")
 second_entry.grid(column=2, row=2)
 second_label = Label(text="seconds", fg=GREEN, font=(FONT_NAME, 8, "bold"), bg=YELLOW)
 second_label.place(x=367, y=70)
